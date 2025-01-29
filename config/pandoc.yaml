@@ -1,0 +1,49 @@
+# config/pandoc.yaml
+
+# Métadonnées par défaut
+metadata:
+  title: ""
+  author: ""
+  date: ""
+
+# Options générales
+from: markdown
+pdf-engine: xelatex
+highlight-style: tango
+table-of-contents: true
+number-sections: true
+standalone: true
+
+# Options de sortie PDF
+variables:
+  papersize: a4
+  documentclass: article
+  fontsize: 11pt
+  geometry:
+    - margin=2.5cm
+    - includeheadfoot
+
+# Extensions Markdown activées
+markdown_extensions:
+  - yaml_metadata_block
+  - fenced_code_blocks
+  - backtick_code_blocks
+  - auto_identifiers
+  - table_captions
+  - link_attributes
+  - smart
+
+# Options de mise en forme
+include-in-header:
+  - templates/template.tex
+
+# Options pour le code source
+highlight-style: tango
+listings: true
+
+# Options pour les diagrammes
+filters:
+  - diagram-generator.lua
+
+# Options pour les images
+dpi: 300

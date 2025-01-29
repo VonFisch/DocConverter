@@ -1,0 +1,27 @@
+name: Build Documentation
+on:
+  push:
+    paths:
+      - '**.md'
+      - 'templates/**'
+      - 'src/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Dependencies
+        run: make install
+        
+      - name: Build Documents
+        run: make build
+        
+      - name: Upload PDFs
+        uses: actions/upload-artifact@v3
+        with:
+          name: documentation
+          path: |
+            output/pdf/*.pdf
+            output/html/*.html
